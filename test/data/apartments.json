@@ -1,0 +1,32 @@
+[
+  {
+    "_id": { "$oid": "012345678901234567890001" },
+    "name": "a1",
+    "sqrft": 1200,
+    "bedrooms": 3,
+    "floor": 21,
+    "rent": 2800,
+    "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
+    "renter": null
+  },
+  {
+    "_id": { "$oid": "012345678901234567890002" },
+    "name": "a2",
+    "sqrft": 1300,
+    "bedrooms": 4,
+    "floor": 22,
+    "rent": 3000,
+    "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
+    "renter": null
+  },
+  {
+    "_id": { "$oid": "012345678901234567890003" },
+    "name": "a3",
+    "sqrft": 100,
+    "bedrooms": 8,
+    "floor": 1,
+    "rent": 50,
+    "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
+    "renter": null
+  }
+]
