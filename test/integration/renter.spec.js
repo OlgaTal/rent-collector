@@ -73,27 +73,38 @@ describe('renter', () => {
         done();
       });
     });
-    //
-    // it('should filter apartments by bedrooms', (done) => {
-    //   request(app)
-    //   .get('/apartments?filter[bedrooms][$eq]=3')
-    //   .end((err, rsp) => {
-    //     expect(err).to.be.null;
-    //     expect(rsp.status).to.equal(200);
-    //     expect(rsp.body.apartments).to.have.length(1);
-    //     expect(rsp.body.apartments[0].name).to.equal('a1');
-    //     done();
-    //   });
-    // });
-    //
-    // it('should filter apartments by sqrft', (done) => {
-    //   request(app)
-    //   .get('/apartments?filter[sqrft][$gte]=1000')
-    //   .end((err, rsp) => {
-    //     expect(err).to.be.null;
-    //     expect(rsp.status).to.equal(200);
-    //     expect(rsp.body.apartments).to.have.length(2);
-    //     done();
-    //   });
+    it('should filter renters by money', (done) => {
+      request(app)
+      .get('/renters?filter[money][$gte]=500')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(200);
+        expect(rsp.body.renters.length).to.equal(2);
+        done();
+      });
+    });
+    it('should filter renters BY EVERYTHING', (done) => {
+      request(app)
+      .get('/renters?filter[money][$gte]=500&sort[name]=1&page=2&limit=1')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(200);
+        expect(rsp.body.renters[0].name).to.equal('Tiffany Rocks');
+        done();
+      });
+    });
   });
+  //
+  // describe('delete /renters/:id' () => {
+  //   it('should delete the renter specified in the url', (done) => {
+  //     request(app)
+  //     .delete('/renters/012345678901234567890129')
+  //     .end((err, rsp) => {
+  //       expect(err).to.be.null;
+  //       expect(rsp.status).to.equal(200);
+  //       expect(rsp.body.renter.name).to.equal('Billy Joel');
+  //       done();
+  //     });
+  //   });
+  // });
 });
