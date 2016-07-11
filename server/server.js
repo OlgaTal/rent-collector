@@ -23,6 +23,7 @@ app.listen(port, () => {
 });
 
 app.use('/apartments', require('./controllers/apartments'));
+app.use('/renters', require('./controllers/renters'));
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../static/index.html'));

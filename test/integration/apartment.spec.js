@@ -4,7 +4,6 @@ const expect = require('chai').expect;
 const request = require('supertest');
 const app = require('../../dst/server');
 const cp = require('child_process');
-// const Apartment = require('../../dst/models/apartment');
 
 describe('apartments', () => {
   beforeEach((done) => {
@@ -102,6 +101,17 @@ describe('apartments', () => {
       });
     });
 
+    it('should filter apartments by floor', (done) => {
+      request(app)
+      .get('/apartments?filter[floor][$gte]=2')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(200);
+        expect(rsp.body.apartments).to.have.length(2);
+        done();
+      });
+    });
+
     it('should filter apartments by EVERYTHING', (done) => {
       request(app)
       .get('/apartments?filter[rent][$lte]=2900&filter[bedrooms][$gte]=2&sort[name]=1&page=2&limit=1')
@@ -116,11 +126,22 @@ describe('apartments', () => {
 
     it('should find all vacant apartments', (done) => {
       request(app)
-      .get('/apartments?filter[renter]=null')
+      .get('/apartments?filter[renter][$eq]=vacant')
       .end((err, rsp) => {
         expect(err).to.be.null;
         expect(rsp.status).to.equal(200);
         expect(rsp.body.apartments).to.have.length(3);
+        done();
+      });
+    });
+
+    it('should find all occupied apartments', (done) => {
+      request(app)
+      .get('/apartments?filter[renter][$ne]=vacant')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(200);
+        expect(rsp.body.apartments).to.have.length(0);
         done();
       });
     });

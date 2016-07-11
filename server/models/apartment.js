@@ -7,7 +7,7 @@ const apartmentSchema = new Schema({
   bedrooms: { type: Number, required: true },
   floor: { type: Number, required: true },
   rent: { type: Number, required: true },
-  renter: { type: mongoose.Schema.ObjectId, ref: 'Renter', default: null },
+  renter: { type: String, default: 'vacant' },
   createdAt: { type: Date, default: Date.now },
 });
 

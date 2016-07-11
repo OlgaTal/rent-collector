@@ -7,11 +7,8 @@ const schema = {
   page: joi.number().default(1),
   limit: joi.number().default(10),
   filter: joi.object().keys({
-    bedrooms: { $eq: joi.number(), $gte: joi.number() },
-    sqrft: { $eq: joi.number(), $gte: joi.number() },
-    floor: { $eq: joi.number(), $gte: joi.number() },
-    rent: { $eq: joi.number(), $lte: joi.number() },
-    renter: { $ne: joi.string(), $eq: joi.string() },
+    name: { $eq: joi.string(), $gte: joi.string(), $lte: joi.string() },
+    money: { $eq: joi.number(), $gte: joi.number(), $lte: joi.number() },
   }),
   sort: joi.object(),
 };

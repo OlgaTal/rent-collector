@@ -7,7 +7,7 @@
     "floor": 21,
     "rent": 2800,
     "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
-    "renter": null
+    "renter": "vacant"
   },
   {
     "_id": { "$oid": "012345678901234567890002" },
@@ -17,7 +17,7 @@
     "floor": 22,
     "rent": 3000,
     "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
-    "renter": null
+    "renter": "vacant"
   },
   {
     "_id": { "$oid": "012345678901234567890003" },
@@ -27,6 +27,6 @@
     "floor": 1,
     "rent": 50,
     "dateCreated": { "$date": "2016-06-30T00:00:00.000Z" },
-    "renter": null
+    "renter": "vacant"
   }
 ]
