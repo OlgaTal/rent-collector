@@ -94,17 +94,27 @@ describe('renter', () => {
       });
     });
   });
-  //
-  // describe('delete /renters/:id' () => {
-  //   it('should delete the renter specified in the url', (done) => {
-  //     request(app)
-  //     .delete('/renters/012345678901234567890129')
-  //     .end((err, rsp) => {
-  //       expect(err).to.be.null;
-  //       expect(rsp.status).to.equal(200);
-  //       expect(rsp.body.renter.name).to.equal('Billy Joel');
-  //       done();
-  //     });
-  //   });
-  // });
+
+  describe('delete /renters/:id', () => {
+    it('should delete the renter specified in the url', (done) => {
+      request(app)
+      .delete('/renters/012345678901234567890129')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(200);
+        expect(rsp.body.renter.name).to.equal('Billy Joel');
+        done();
+      });
+    });
+    it('should throw an error if a bad url is given', (done) => {
+      request(app)
+      .delete('/renters/cowmoo')
+      .end((err, rsp) => {
+        expect(err).to.be.null;
+        expect(rsp.status).to.equal(400);
+        expect(rsp.body.messages[0]).to.equal('"id" with value "cowmoo" fails to match the required pattern: /^[0-9a-f]{24}$/');
+        done();
+      });
+    });
+  });
 });
